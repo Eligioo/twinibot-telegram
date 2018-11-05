@@ -9,7 +9,7 @@ const buildStreamers = (body) => {
     let streamersInfo = ``
     streamersInfo += `Streamers online: ${body.total_online} / ${body.total_twini_channels}\n\n`
     body.streams.forEach(element => {
-        streamersInfo += `👤 ${element.channel.display_name} / 🎮 ${element.channel.game} / 🎥 ${element.channel.status} (${element.channel.url})\n\n`
+        streamersInfo += `👤 ${element.channel.display_name} | 👀 ${element.viewers} viewers | 🎮 ${element.channel.game} | 🎥 ${element.channel.status} (${element.channel.url})\n\n`
     });
     return streamersInfo
 }
