@@ -1,7 +1,7 @@
 require('dotenv').config()
 const Telegraf = require('telegraf')
 const fetch = require("node-fetch")
-const command_list = 'streamers - Show a list of online streamers'
+const command_list = 'live - Show a list of online streamers'
 
 const bot = new Telegraf(process.env.TELEGRAM_KEY, {username: process.env.TELEGRAM_USERNAME})
 
@@ -14,7 +14,7 @@ const buildStreamers = (body) => {
     return streamersInfo
 }
 
-bot.command('streamers', async (ctx) => {
+bot.command('live', async (ctx) => {
     try {
         const res = await fetch("https://app.twinibot.com/api/channels")
         const body = await res.json()
