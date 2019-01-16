@@ -57,9 +57,21 @@ bot.command('donators', async (ctx) => {
     }
 })
 
+let timeout = new Date(Date.now())
+
 bot.command('ban', async (ctx) => {
     try {
-        ctx.reply("@RichyBC @383856914 (Glenn) @brantje Possible community rule violation!")
+        const now = new Date(Date.now())
+        let diff = (now.getTime() - timeout.getTime()) / 1000;
+        diff /= 60;
+        diff = Math.abs(Math.round(diff));
+        if(diff >= 15){
+            timeout = new Date(Date.now())
+            ctx.reply("@RichyBC @383856914 (Glenn) @brantje Possible community rule violation above!")
+        }
+        else{
+            ctx.reply("Admins have been notified already! You can only use this command once every 15 minutes.")
+        }
     } catch (error) {
         console.log(error)
     }
