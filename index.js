@@ -4,6 +4,7 @@ const fetch = require("node-fetch")
 const command_list = `
                         donators - Show the top 10 total donators
                         live - Show a list of online streamers
+                        ban - Notify admins to remove somebody from the channel
                         `
 
 const bot = new Telegraf(process.env.TELEGRAM_KEY, {username: process.env.TELEGRAM_USERNAME})
@@ -53,6 +54,14 @@ bot.command('donators', async (ctx) => {
     } catch (error) {
         console.log(error)
         ctx.reply(`Error while loading the information. Please try again later.`)
+    }
+})
+
+bot.command('ban', async (ctx) => {
+    try {
+        ctx.reply("@RichyBC @383856914 (Glenn) @brantje Possible community rule violation!")
+    } catch (error) {
+        console.log(error)
     }
 })
 
