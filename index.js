@@ -67,7 +67,7 @@ bot.command('ban', async (ctx) => {
         diff = Math.abs(Math.round(diff));
         if(diff >= 15){
             timeout = new Date(Date.now())
-            ctx.reply("@RichyBC @Glenn @brantje Possible community rule violation above!")
+            ctx.reply("@R3dexe @RichyBC @Glenn @brantje Possible community rule violation above!")
         }
         else{
             ctx.reply("Admins have been notified already! You can only use this command once every 15 minutes.")
