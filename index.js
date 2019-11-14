@@ -78,6 +78,7 @@ bot.command('ban', async (ctx) => {
 })
 
 bot.on("new_chat_members", (ctx) => {
+    return
     if(ctx.message && ctx.message.new_chat_members) {
         ctx.message.new_chat_members.forEach(user => {
             let name
