@@ -79,6 +79,7 @@ bot.command('ban', async (ctx) => {
             const messagId = ctx.message.message_id;
             await bot.telegram.sendMessage(process.env.TELEGRAM_REPORT_ID, `Hi, somebody reported something that isn't in line with the community rules check it out here:\n\nhttps://t.me/Nimiq/${messagId}`, solvedMenu)
             ctx.reply("Moderators have been notified. Thank you for your report!")
+            timeout = new Date(Date.now())
         }
         else{
             ctx.reply("Moderators have been notified already! You can only use this command once every 15 minutes.")
