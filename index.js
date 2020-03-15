@@ -77,18 +77,4 @@ bot.command('ban', async (ctx) => {
     }
 })
 
-bot.on("new_chat_members", (ctx) => {
-    return
-    if(ctx.message && ctx.message.new_chat_members) {
-        ctx.message.new_chat_members.forEach(user => {
-            let name
-            if(user.username)
-                name = `@${user.username}`
-            else
-                name = user.first_name
-            ctx.reply(`Welcome ${name}, we suggest new members to check the Nimiq review by Coinbureau. It is a nice unbiased summary of the project: https://youtu.be/7gjDQ7_DHdc
-\nYou can also check the explanatory "what is Nimiq" for a quick explanation: https://youtu.be/dA40oyDVtqs`)
-        })
-    }
-})
 bot.startPolling()
