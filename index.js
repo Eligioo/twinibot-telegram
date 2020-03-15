@@ -59,6 +59,16 @@ bot.command('donators', async (ctx) => {
 
 let timeout = new Date(Date.now())
 
+const solvedMenu = Telegraf.Extra
+    .markdown()
+    .markup((m) => m.inlineKeyboard([
+    m.callbackButton('Solved', 'solved')
+]))
+
+bot.action('solved', (ctx) => {
+    ctx.deleteMessage()
+})
+
 bot.command('ban', async (ctx) => {
     try {
         const now = new Date(Date.now())
@@ -66,11 +76,12 @@ bot.command('ban', async (ctx) => {
         diff /= 60;
         diff = Math.abs(Math.round(diff));
         if(diff >= 15){
-            timeout = new Date(Date.now())
-            ctx.reply("@R3dexe @RichyBC @mrearthbound Possible community rule violation above!")
+            const messagId = ctx.message.message_id;
+            await bot.telegram.sendMessage(process.env.TELEGRAM_REPORT_ID, `Hi, somebody reported something that isn't in line with the community rules check it out here:\n\nhttps://t.me/Nimiq/${messagId}`, solvedMenu)
+            ctx.reply("Moderators have been notified. Thank you for your report!")
         }
         else{
-            ctx.reply("Admins have been notified already! You can only use this command once every 15 minutes.")
+            ctx.reply("Moderators have been notified already! You can only use this command once every 15 minutes.")
         }
     } catch (error) {
         console.log(error)
